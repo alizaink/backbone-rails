@@ -8,14 +8,14 @@
         model.bind("change:" + name, function() {
           var start, end;
           
-          if (that.selectionStart && that.selectionEnd) {
+          if (that.type == "text" || that.type == "textarea") {
             start = that.selectionStart;
             end = that.selectionEnd;
           }
           
           var retVal = el.val(model.get(name));
           
-          if (that.setSelectionRange)
+          if (that.type == "text" || that.type == "textarea")
             that.setSelectionRange(start, end);
           
           return retVal;
