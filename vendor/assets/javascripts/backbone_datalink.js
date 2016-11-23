@@ -6,9 +6,21 @@
         el = $(this);
         name = el.attr("name");
         model.bind("change:" + name, function() {
-          return el.val(model.get(name));
+          var start, end;
+          
+          if (el.selectionStart && el.selectionEnd) {
+            start = el.selectionStart;
+            end = el.selectionEnd;
+          }
+          
+          var retVal = el.val(model.get(name));
+          
+          if (el.setSelectionRange)
+            el.setSelectionRange(start, end);
+          
+          return retVal;
         });
-        return $(this).bind("change", function() {
+        return $(this).bind("keyup", function() {
           var attrs;
           el = $(this);
           attrs = {};
