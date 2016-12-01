@@ -9,7 +9,7 @@
           if (el.val() != model.get(name))
             el.val(model.get(name));
         });        
-        return $(this).bind("change keyup", function() {
+        return $(this).bind("change input", function() {
           var attrs;
           el = $(this);
           attrs = {};
