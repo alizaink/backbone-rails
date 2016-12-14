@@ -11,9 +11,14 @@
         });        
         return $(this).bind("change input", function() {
           var attrs;
+          var value;
           el = $(this);
+          value = this.type == "checkbox" ? this.checked : el.val();
           attrs = {};
-          attrs[el.attr("name")] = el.val();
+          
+          if (el.attr("name"))
+            attrs[el.attr("name")] = value;
+          
           return model.set(attrs);
         });
       });
