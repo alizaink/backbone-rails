@@ -33,7 +33,7 @@
             attrs[attr_name] = value;
           }
           
-          return model.set(attrs);
+          return currentModel.set(attrs);
         });
       });
     }
