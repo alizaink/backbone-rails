@@ -21,8 +21,13 @@
           attrs = {};
           currentModel = model;
           
-          if (value && el.data('capitalize') == true)
+          if (value && el.data('capitalize') == true && this.setSelectionRange) {
             value = value.replace(/\b\w/g, function(l) { return l.toUpperCase() })
+            start = this.selectionStart,
+            end = this.selectionEnd;
+            el.val(value)
+            this.setSelectionRange(start, end);
+          }
           
           if (el.attr("name")) {
             attr_name = el.attr("name");
