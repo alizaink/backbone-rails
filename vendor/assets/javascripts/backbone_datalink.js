@@ -21,6 +21,9 @@
           attrs = {};
           currentModel = model;
           
+          if (value && el.data('capitalize') == 'true')
+            value = value.replace(/\b\w/g, function(l) { return l.toUpperCase() })
+          
           if (el.attr("name")) {
             attr_name = el.attr("name");
             modelNames = attr_name.split('.')
